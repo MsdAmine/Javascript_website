@@ -20,21 +20,13 @@
   <body>
     <div class="Left_container"></div>
 
-    <div class="Right_container-sign-in">
+    <div class="Right_container-sign-in" id="div1">
       <form>
         <h1 class="Lg" id="lg">Login</h1>
         <p class="subHeader" id="Subheader">
           Welcome back! Please login to your account.
         </p>
-        <div class="namelabel Hidden" id="Name-input">
-          <label class="inputLabel">Username</label>
-          <input
-            type="text"
-            placeholder="Name"
-            class="inputBox NameInput"
-            id="name"
-          />
-        </div>
+
         <div class="EmailLabel">
           <label class="inputLabel">Email</label>
           <input
@@ -55,15 +47,6 @@
             id="password"
           />
         </div>
-        <div class="Confpwdlabel Hidden" id="Conf-pwd-input">
-          <label class="inputLabel">Confirm Password</label>
-          <input
-            type="password"
-            placeholder="Confirm password"
-            class="inputBox PwdInput"
-            id="ConfirmPassword"
-          />
-        </div>
 
         <div class="Remember_Forgot" id="remember_Forgot">
           <div class="Remember">
@@ -76,9 +59,62 @@
 
         <input type="submit" value="Login" class="LoginButton" id="sign-in" />
         <span class="sign-up" id="footer"
-          >Don't have an account ? <a style="color: #ff6f61" onclick="Hide()" id="sign-up-text">Sign up</a></span
+          >Don't have an account ?
+          <a style="color: #ff6f61" onclick="Hide()" id="sign-up-text"
+            >Sign up</a
+          ></span
         >
       </form>
+    </div>
+
+    <div class="Right_container-sign-in Hidden" id="div2">
+      <h1 class="Lg" id="sign-up-title">Sign up</h1>
+      <p class="subHeader" id="Subheader2">
+        Hello, Freind! Register with your personnel details.
+      </p>
+      <div class="namelabel" id="Name-input">
+        <label class="inputLabel">Username</label>
+        <input
+          type="text"
+          placeholder="Name"
+          class="inputBox NameInput"
+          id="name"
+        />
+      </div>
+      <div class="EmailLabel">
+        <label class="inputLabel">Email</label>
+        <input
+          type="text"
+          placeholder="e.g example@gmail.com"
+          class="inputBox emailinput"
+          id="email2"
+          required
+        />
+      </div>
+      <div class="pwdlabel">
+        <label class="inputLabel">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          class="inputBox PwdInput"
+          id="password2"
+        />
+      </div>
+      <div class="Confpwdlabel" id="Conf-pwd-input">
+        <label class="inputLabel">Confirm Password</label>
+        <input
+          type="password"
+          placeholder="Confirm password"
+          class="inputBox PwdInput"
+          id="ConfirmPassword"
+        />
+      </div>
+
+      <input type="submit" value="Sign Up" class="LoginButton" id="sign-up" />
+      <span class="sign-up" id="footer2"
+        >Already have an account?
+        <a style="color: #ff6f61" onclick="Hide()">Login</a></span
+      >
     </div>
     <script src="Login_page.js"></script>
   </body>

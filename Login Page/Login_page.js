@@ -1,46 +1,16 @@
-var NameDiv = document.getElementById("Name-input");
-var ConfPwddiv = document.getElementById("Conf-pwd-input");
+var div1 = document.getElementById("div1");
+var div2 = document.getElementById("div2");
 
 function Hide() {
-  var Su = document.getElementById("lg");
-  var subheader = document.getElementById("Subheader");
-  var RememberForget = document.getElementById("remember_Forgot");
-  var signin = document.getElementById("sign-in");
-  var HaveAccount = document.getElementById("footer");
-
-  if (NameDiv.classList.contains("Hidden")) {
-    //* Sign up form.
-
-    NameDiv.classList.remove("Hidden");
-    NameDiv.classList.add("Visible");
-    ConfPwddiv.classList.remove("Hidden");
-    ConfPwddiv.classList.add("Visible");
-    RememberForget.classList.add("Hidden");
-    RememberForget.classList.remove("Visible");
-    Su.innerHTML = "Sign up";
-    Su.id="sign-up";
-    subheader.innerHTML =
-      "Hello, Freind! Register with your personnel details.";
-    signin.value = "Sign up";
-    signin.style = "margin-top:10px";
-    HaveAccount.innerHTML =
-      'Already have an account? <a style="color: #ff6f61" onclick="Hide()">Login</a>';
+  if (div2.classList.contains("Hidden")) {
+    div1.classList.remove("Visible");
+    div1.classList.add("Hidden");
+    div2.classList.add("Visible");
+    div2.classList.remove("Hidden");
   } else {
-    //* Sign in form.
-
-    NameDiv.classList.add("Hidden");
-    NameDiv.classList.remove("Visible");
-    ConfPwddiv.classList.add("Hidden");
-    ConfPwddiv.classList.remove("Visible");
-    RememberForget.classList.remove("Hidden");
-    RememberForget.classList.add("Visible");
-    Su.innerHTML = "Login";
-    Su.id="sign-in";
-    subheader.innerHTML = "Welcome back! Please login to your account.";
-    signin.value = "Login";
-    signin.style = "margin-top:30px";
-
-    HaveAccount.innerHTML =
-      'Don\'t have an account ? <a style="color: #ff6f61" onclick="Hide()">Sign up</a>';
+    div2.classList.remove("Visible");
+    div2.classList.add("Hidden");
+    div1.classList.add("Visible");
+    div1.classList.remove("Hidden");
   }
 }

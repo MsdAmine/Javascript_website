@@ -1,7 +1,7 @@
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
-} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 import { auth } from "../firebaseConfig.js";
 
