@@ -3,7 +3,7 @@ import {
   sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
 
-import { auth } from "../firebaseConfig";
+import { auth } from "../firebaseConfig.js";
 
 function ResetPwd() {
   const email = document.getElementById("email").value;
@@ -24,6 +24,7 @@ function ResetPwd() {
       });
   }
 }
+
 window.ResetPwd = ResetPwd;
 
 const button = document.getElementById("sign-in");
