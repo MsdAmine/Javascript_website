@@ -18,7 +18,7 @@ body {
   width: 60%;
   height: 100%;
   text-align: center;
-  background-image: url(images/pexels-jonathanborba-6302435.jpg);
+  background-image: url(/images/pexels-jonathanborba-6302435.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -63,7 +63,7 @@ body {
 }
 
 .NameInput {
-  background-image: url(images/user-solid.svg);
+  background-image: url(/images/user-solid.svg);
   background-size: 20px auto;
   background-position: 10px center;
   background-repeat: no-repeat;
@@ -75,7 +75,7 @@ input,
   margin-bottom: 15px;
 }
 .emailinput {
-  background-image: url(images/envelope-solid.png);
+  background-image: url(/images/envelope-solid.png);
   background-size: 20px auto;
   background-position: 10px center;
   background-repeat: no-repeat;
@@ -87,7 +87,7 @@ input,
   padding: 4px 0 0 10px;
 }
 .PwdInput {
-  background-image: url(images/lock-solid.png);
+  background-image: url(/images/lock-solid.png);
   background-size: 20px auto;
   background-position: 10px center;
   background-repeat: no-repeat;
