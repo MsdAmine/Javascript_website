@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <nav id="sidebar">
+      <ul>
+        <li>
+          <span class="logo">LOGO HERE</span>
+          <button onclick="toggleSidebar()" id="toggle-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#7f8c8d"
+            >
+              <path
+                d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"
+              />
+            </svg>
+          </button>
+        </li>
+        <!-- Nav Menu starts Here -->
+        <li class="active">
+          <a> <i class="fa-solid fa-house fa-xl"></i><span>Home</span></a>
+        </li>
+        <li>
+          <a href="/Products/products.html"
+            ><i class="fa-solid fa-boxes-stacked fa-xl"></i
+            ><span>Products</span></a
+          >
+        </li>
+        <li>
+          <a href="/Sales/Sales.html"
+            ><i class="fa-solid fa-truck fa-xl"></i><span>Sales</span></a
+          >
+        </li>
+        <li class="Inbox">
+          <a href="#"
+            ><i class="fa-solid fa-inbox fa-xl"></i><span>Inbox</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="top-bar">
+        <h2>Welcome Massine!</h2>
+        <div class="profile">
+          <a href="/Profile/profile.html">
+            <img
+              src="/images/profile2.png"
+              height="60px"
+              width="60px"
+              alt="profile pic"
+          /></a>
+        </div>
+      </div>
+      <div class="overview">
+        <div class="stat-card">
+          <div class="icon-container">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="stat-text">
+            <div class="stat-value" id="totalProduct"></div>
+            <p>Total Products</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-container">
+            <i class="fa-solid fa-sack-dollar"></i>
+          </div>
+          <div class="stat-text">
+            <div class="stat-value" id="totalValue"></div>
+            <p>Total Inventory Value</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-container">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="stat-text">
+            <div class="stat-value" id="totalStock"></div>
+            <p>Total Stock</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-container">
+            <i class="fas fa-warehouse"></i>
+          </div>
+          <div class="stat-text">
+            <div class="stat-value"></div>
+            <p>Stock</p>
+          </div>
+        </div>
+      </div>
+      <canvas id="categoryChart"></canvas>
+    </main>
+
+    <script type="module" src="/index.js"></script>
+    <script type="module" src="chart.js"></script>
+    <script type="text/javascript" src="/sidebar.js"></script>
+  </body>
+</html>

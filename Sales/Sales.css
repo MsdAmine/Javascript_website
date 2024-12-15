@@ -1,0 +1,89 @@
+.top1-bar {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--base-clr);
+  border-bottom: 1px solid var(--line-clr);
+  gap: 20px;
+}
+
+.top1-bar h2 {
+  font-size: 2rem;
+  color: var(--text-clr);
+  font-weight: 600;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.products-container {
+  width: 100%;
+  height: auto;
+  background-color: var(--base-clr);
+
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  justify-content: flex-start; /* Align items to the start */
+  gap: 20px;
+}
+
+.table-container {
+  width: calc(100%-20px);
+  height: fit-content;
+  overflow-x: auto;
+  background-color: var(--base-clr);
+  margin: 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+  color: var(--base-clr);
+  text-align: left;
+}
+
+.sales-table th,
+.sales-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: black;
+}
+
+.sales-table th {
+  color: var(--accent-clr);
+  font-weight: bold;
+}
+
+.sales-table td {
+  vertical-align: middle;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+}
+.delete-icon {
+  cursor: pointer;
+  color: red;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+.edit-icon {
+  cursor: pointer;
+  color: var(--text-clr);
+  display: flex;
+}
+
+.edit-icon:hover {
+  color: var(--secondary-text-clr);
+}

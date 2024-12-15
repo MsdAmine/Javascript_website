@@ -1,0 +1,147 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: rgb(255, 250, 250);
+}
+
+.Left_container {
+  width: 60%;
+  height: 100%;
+  text-align: center;
+  background-image: url(images/pexels-jonathanborba-6302435.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.Right_container-sign-in {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 250, 250);
+  padding-left: 100px;
+}
+
+.Lg {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.inputBox {
+  border: none;
+  border-radius: 18px;
+  width: 400px;
+  height: 50px;
+  box-shadow: 2px 2px 7px lightgrey;
+  padding-left: 40px;
+  display: block;
+  margin-top: 6px;
+}
+.subHeader {
+  color: rgb(160, 160, 160);
+  padding-top: 10px;
+  padding-bottom: 40px;
+  width: 260px;
+}
+.inputLabel {
+  color: rgb(137, 137, 137);
+}
+
+.NameInput {
+  background-image: url(images/user-solid.svg);
+  background-size: 20px auto;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+
+input,
+.NameInput {
+  margin-bottom: 15px;
+}
+.emailinput {
+  background-image: url(images/envelope-solid.png);
+  background-size: 20px auto;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+#Erreur {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: red;
+  display: none;
+  padding: 4px 0 0 10px;
+}
+.PwdInput {
+  background-image: url(images/lock-solid.png);
+  background-size: 20px auto;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.Hidden {
+  visibility: hidden;
+  display: none;
+}
+.Visible {
+  visibility: visible;
+}
+
+.Remember_Forgot {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin-top: 10px;
+}
+
+.Forgot {
+  color: #ff6f61;
+  cursor: pointer;
+}
+
+.LoginButton {
+  width: 400px;
+  height: 55px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 30px;
+  background-color: #ff5747;
+
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.LoginButton:hover {
+  background-color: #ff6f61;
+}
+
+.sign-up {
+  display: block;
+  margin-top: 15px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  padding-left: 100px;
+  a {
+    cursor: pointer;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");

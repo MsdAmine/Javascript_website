@@ -1,0 +1,308 @@
+.top1-bar {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: flex-end; /* Align elements to the right */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--base-clr);
+  border-bottom: 1px solid var(--line-clr);
+  gap: 20px; /* Space between Add button and profile */
+}
+
+.Add-prod-icon {
+  height: 40px;
+  width: 40px;
+  background-color: #e76f51;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.Add-prod-icon i {
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Add-prod-icon .add-text {
+  position: absolute;
+  opacity: 0;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-left: 28px;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.Add-prod-icon:hover {
+  width: 100px;
+  border-radius: 20px;
+}
+
+.Add-prod-icon:hover i {
+  transform: translateX(-15px);
+}
+
+.Add-prod-icon:hover .add-text {
+  opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.popup.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-content {
+  font-family: "Inter", sans-serif;
+  background: #fff;
+  padding: 20px;
+  padding-right: 40px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  h3 {
+    padding-bottom: 15px;
+  }
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Buttons */
+.submit-btn,
+.open-popup-btn {
+  display: inline-block;
+  background: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover,
+.open-popup-btn:hover {
+  background: #45a049;
+}
+
+.open-popup-btn {
+  margin: 20px;
+  display: inline-block;
+}
+
+.profile img {
+  border-radius: 50%;
+  display: block;
+  cursor: pointer;
+  width: 50px; /* Consistent size */
+  height: 50px; /* Ensure a square image */
+  object-fit: cover; /* Crop image to fit circle */
+}
+.top1-bar h2 {
+  font-size: 2rem;
+  color: var(--text-clr);
+  font-weight: 600;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.table-container {
+  width: calc(100%-20px);
+  height: fit-content;
+  overflow-x: auto;
+  background-color: var(--base-clr);
+  margin: 10px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+  color: var(--base-clr);
+  text-align: left;
+}
+
+.products-table th,
+.products-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  color: black;
+}
+
+.products-table th {
+  color: var(--accent-clr);
+  font-weight: bold;
+}
+
+.products-table td {
+  vertical-align: middle;
+}
+.products-table tr:hover {
+  background-color: var(--line-clr);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.actions .sold {
+  cursor: pointer;
+}
+.delete-icon {
+  cursor: pointer;
+  color: red;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+.edit-icon {
+  cursor: pointer;
+  color: var(--text-clr);
+  display: flex;
+}
+
+.edit-icon:hover {
+  color: var(--secondary-text-clr);
+}
+
+.sales-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.sales-modal.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sales-modal-content {
+  font-family: "Poppins", sans-serif;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.sales-modal-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sales-modal-content .close-btn:hover {
+  color: #333;
+}
+
+.sales-modal-content .form-group {
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+
+.sales-modal-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.sales-modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.sales-modal-content h3 {
+  padding-bottom: 20px;
+}

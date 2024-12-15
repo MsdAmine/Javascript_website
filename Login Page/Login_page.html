@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+    <link rel="stylesheet" href="Login_page.css" />
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js"
+    ></script>
+    <script
+      type="module"
+      src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"
+    ></script>
+
+    <script type="module" src="register.js"></script>
+  </head>
+  <body>
+    <div class="Left_container"></div>
+
+    <div class="Right_container-sign-in">
+      <form>
+        <h1 class="Lg" id="lg">Login</h1>
+        <p class="subHeader" id="Subheader">Welcome back! Please login to your account.</p>
+        <div class="namelabel Hidden" id="Name-input">
+          <label class="inputLabel">Username</label>
+          <input
+            type="text"
+            placeholder="Name"
+            class="inputBox NameInput"
+            id="name"
+          />
+        </div>
+        <div class="EmailLabel">
+          <label class="inputLabel">Email</label>
+          <input
+            type="text"
+            placeholder="e.g example@gmail.com"
+            class="inputBox emailinput"
+            id="email"
+            required
+          />
+          <span id="Erreur">veuiller remplire ce champ</span>
+        </div>
+        <div class="pwdlabel">
+          <label class="inputLabel">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            class="inputBox PwdInput"
+            id="password"
+          />
+        </div>
+        <div class="Confpwdlabel Hidden" id="Conf-pwd-input">
+          <label class="inputLabel">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="Confirm password"
+            class="inputBox PwdInput"
+            id="ConfirmPassword"
+          />
+        </div>
+
+        <div class="Remember_Forgot" id="remember_Forgot">
+          <div class="Remember">
+            <input type="checkbox" style="accent-color: #ff6f61" />
+            <span>Remember me</span>
+          </div>
+
+          <span class="Forgot" onclick="ResetPwd()">Forget password</span>
+        </div>
+
+        <input type="submit" value="Login" class="LoginButton" id="sign-in" />
+        <span class="sign-up" id="footer"
+          >Don't have an account ? <a style="color: #ff6f61" onclick="Hide()">Sign up</a></span
+        >
+      </form>
+    </div>
+    <script src="Login_page.js"></script>
+  </body>
+</html>
