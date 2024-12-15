@@ -24,7 +24,6 @@ document.getElementById("sign-up").addEventListener("click", async (e) => {
   const password = document.getElementById("password2").value;
   const confirmPassword = document.getElementById("ConfirmPassword").value;
 
-  // Basic form validation
   if (!email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
     return;
