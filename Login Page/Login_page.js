@@ -18,6 +18,7 @@ function Hide() {
     RememberForget.classList.add("Hidden");
     RememberForget.classList.remove("Visible");
     Su.innerHTML = "Sign up";
+    Su.id="sign-up";
     subheader.innerHTML =
       "Hello, Freind! Register with your personnel details.";
     signin.value = "Sign up";
@@ -34,6 +35,7 @@ function Hide() {
     RememberForget.classList.remove("Hidden");
     RememberForget.classList.add("Visible");
     Su.innerHTML = "Login";
+    Su.id="sign-in";
     subheader.innerHTML = "Welcome back! Please login to your account.";
     signin.value = "Login";
     signin.style = "margin-top:30px";
