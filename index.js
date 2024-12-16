@@ -20,9 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Fetch and display products
-export async function fetchAndDisplayProducts(userId) {
+async function fetchAndDisplayProducts(userId) {
   try {
-    // Fetch products collection for the authenticated user
     const querySnapshot = await getDocs(
       collection(db, `users/${userId}/products`)
     );
@@ -31,6 +30,7 @@ export async function fetchAndDisplayProducts(userId) {
     let Totalstock = 0;
     let Totalproducts = 0;
     let TotalValue = 0;
+    let TotalSales = 0;
 
     querySnapshot.forEach((doc) => {
       const data = doc.data();
@@ -43,10 +43,21 @@ export async function fetchAndDisplayProducts(userId) {
     const Stck = document.getElementById("totalStock");
     const prods = document.getElementById("totalProduct");
     const Value = document.getElementById("totalValue");
+    const Sales = document.getElementById("totalSales");
+
+    const querySnapshot2 = await getDocs(
+      collection(db, `users/${userId}/sales`)
+    );
+
+    querySnapshot2.forEach((doc) => {
+      const data = doc.data();
+      TotalSales += data.totalPrice;
+    });
 
     Stck.innerHTML = Totalstock;
     prods.innerHTML = Totalproducts;
     Value.innerHTML = "$" + Math.trunc(TotalValue);
+    Sales.innerHTML = "$" + Math.trunc(TotalSales);
   } catch (error) {
     console.error("Error fetching products:", error);
     alert("Failed to load products.");
@@ -66,29 +77,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-async function fetchCategoryValues(userId) {
-  const categoryValues = {};
-
-  try {
-    const querySnapshot = await getDocs(
-      collection(db, `users/${userId}/products`)
-    );
-
-    querySnapshot.forEach((doc) => {
-      const product = doc.data();
-      const category = product.category;
-      const value = product.price * product.stock;
-
-      if (!categoryValues[category]) {
-        categoryValues[category] = 0;
-      }
-      categoryValues[category] += value;
-    });
-
-    return categoryValues;
-  } catch (error) {
-    console.error("Error fetching product data:", error);
-    return {};
-  }
-}

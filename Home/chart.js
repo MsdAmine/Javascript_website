@@ -105,8 +105,6 @@ async function renderChart(userId) {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User signed in:", user.uid);
-
-    // Pass the authenticated user's ID to your function
     renderChart(user.uid);
   } else {
     console.log("No user signed in.");

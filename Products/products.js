@@ -11,7 +11,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
 
-async function fetchAndDisplayProducts(userId) {
+export async function fetchAndDisplayProducts(userId) {
   const tableBody = document.getElementById("products-tbody");
   const querySnapshot = await getDocs(
     collection(db, `users/${userId}/products`)
