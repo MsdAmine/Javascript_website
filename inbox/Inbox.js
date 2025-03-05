@@ -12,12 +12,9 @@ setTimeout(() => {
 }, 1000);
 
 async function fetchMsgs(userId) {
-    const msg = document.getElementById("msg");
     const messagesContainer = document.getElementById("messages-container");
 
-    const notifications = [
-        { type: "", text: "" },
-    ];
+    const notifications = [];
 
     const querySnapshot = await getDocs(
         collection(db, `users/${userId}/products`)
@@ -26,21 +23,29 @@ async function fetchMsgs(userId) {
     querySnapshot.forEach((doc) => {
         const data = doc.data();
         if (data.stock < 18) {
-            notifications.push({ type: "stock", text: `📦 Stock Alert: Item #A123 is running low (${data.stock} units left).` })
+            notifications.push({ type: "Stock Alert", text: `📦 Item ${data.name} is running low (${data.stock} units left).` });
         }
-        console.log(data.stock);
     });
 
-    function addMessage(text) {
-        const message = document.createElement("p");
-        message.textContent = text;
-        message.classList.add("message");
-        messagesContainer.appendChild(message);
+    function addMessage(type, text) {
+        const messageBox = document.createElement("div");
+        messageBox.classList.add("message-box");
+
+        const title = document.createElement("span");
+        title.classList.add("message-title");
+        title.textContent = type;
+
+        const messageText = document.createElement("p");
+        messageText.textContent = text;
+
+        messageBox.appendChild(title);
+        messageBox.appendChild(messageText);
+        messagesContainer.appendChild(messageBox);
     }
 
-    // Simulate incoming messages (e.g., real-time updates)
     notifications.forEach((msg, index) => {
-        setTimeout(() => addMessage(msg.text), index * 1000); // Add messages with delay
+        setTimeout(() => addMessage(msg.type, msg.text), index * 200);
     });
 }
+
 

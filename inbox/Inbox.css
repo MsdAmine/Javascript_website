@@ -1,51 +1,51 @@
-/* Centering the inbox */
+/* Center the main container */
 .main-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* Full viewport height */
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;  /* Centers vertically */
+    height: 100vh;  /* Full viewport height */
 }
 
-/* Inbox container */
-.inbox-container {
-    width: 60%;
-    max-width: 600px;
-    height: 400px;
-    /* Fixed height */
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+/* Message container */
+#messages-container {
     display: flex;
     flex-direction: column;
+    gap: 10px; /* Space between messages */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    min-width: 400px; /* Minimum width */
+    max-width: 500px; /* Limit width */
 }
 
-/* Scrollable messages area */
-.messages {
-    flex: 1;
-    /* Allows the messages div to expand */
-    overflow-y: auto;
-    /* Enables vertical scrolling */
-    max-height: 300px;
-    /* Set max height */
-    padding: 10px;
-    border: 1px solid #ddd;
+/* Notification Box */
+.message-box {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #ff6b6b; /* Red left border for alert */
+    position: relative;
+}
+
+/* Message Title */
+.message-title {
+    position: absolute;
+    top: -10px; /* Move title slightly above */
+    left: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 3px 8px;
     border-radius: 5px;
-    background-color: #fafafa;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-/* Custom scrollbar (optional) */
-.messages::-webkit-scrollbar {
-    width: 6px;
-}
-
-.messages::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
-
-.messages::-webkit-scrollbar-thumb:hover {
-    background: #555;
+/* Message Text */
+.message-box p {
+    margin-top: 10px; /* Push text down below the title */
+    font-size: 14px;
+    color: #333;
+    text-align: left;
 }
