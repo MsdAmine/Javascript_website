@@ -44,5 +44,4 @@ Contributions are welcome! If you have suggestions for improvements, new feature
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
 ## Contact  
 For any questions or further information, please reach out via:  
-- **Email:** [your.email@example.com](mailto:your.email@example.com)  
-- **GitHub:** [MsdAmine](https://github.com/MsdAmine)  
+- **Email:** [massine000@example.com](mailto:massine000@example.com) 
