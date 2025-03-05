@@ -1,25 +1,51 @@
-/* Center the inbox inside main-container */
+/* Centering the inbox */
 .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    /* Full viewport height */
 }
 
+/* Inbox container */
 .inbox-container {
     width: 60%;
     max-width: 600px;
+    height: 400px;
+    /* Fixed height */
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Scrollable messages area */
 .messages {
-    margin-top: 15px;
+    flex: 1;
+    /* Allows the messages div to expand */
+    overflow-y: auto;
+    /* Enables vertical scrolling */
+    max-height: 300px;
+    /* Set max height */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #fafafa;
+}
+
+/* Custom scrollbar (optional) */
+.messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
