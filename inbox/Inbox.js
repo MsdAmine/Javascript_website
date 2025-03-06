@@ -39,7 +39,7 @@ async function fetchMsgs(userId) {
             color = "yellow"; // Moderate stock
         }
         
-        if(data.stock < 30){
+        if(data.stock < 90){
         notifications.push({ 
             type: "Stock Alert",
             date: date,
