@@ -44,7 +44,7 @@ async function fetchMsgs(userId) {
     }
 
     notifications.forEach((msg, index) => {
-        setTimeout(() => addMessage(msg.type, msg.text), index * 200);
+        addMessage(msg.type, msg.text);
     });
 }
 
