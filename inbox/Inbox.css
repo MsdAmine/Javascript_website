@@ -33,25 +33,19 @@
 .profile {
     display: flex;
     align-items: center;
-    margin-right: 35px; /* Ensures spacing from the right edge */
-    overflow: hidden; /* Prevents content from spilling out */
+    margin-right: 35px; 
+    overflow: hidden; 
 }
 
-/* Ensure content below top bar is visible */
 .main-container {
     display: flex;
-    height: 100%; /* Subtract top bar height */
+    height: 100%;
     width: 100%;
 }
 
-/* Adjust when sidebar is closed */
-#sidebar.close ~ .main-container {
-    width: calc(100% - 60px);
-    margin-left: 60px;
-}
 
 
-/* Ensure messages container is properly positioned */
+
 #messages-container {
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -63,12 +57,10 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 70px; /* Prevent content from sticking to the top */
+    margin-top: 70px; 
     overflow-y: auto;
 }
 
-
-/* Message box styling */
 .message-box {
     height: 75px;
     background-color: white;
@@ -79,7 +71,6 @@
     transition: 0.3s ease-in-out;
 }
 
-/* Header with title and date */
 .message-header {
     display: flex;
     justify-content: space-between;
