@@ -40,13 +40,8 @@
 /* Ensure content below top bar is visible */
 .main-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 70px); /* Subtract top bar height */
-    width: calc(100% - 200px); /* Subtract sidebar width */
-    margin-left: 130px; /* Push content to the right */
-    padding-top: 70px; /* Prevent overlap with top bar */
-    transition: margin-left 300ms ease-in-out, width 300ms ease-in-out;
+    height: 100%; /* Subtract top bar height */
+    width: 100%;
 }
 
 /* Adjust when sidebar is closed */
@@ -62,19 +57,20 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 800px;
-    max-height: 400px;
-    background-color: #f9f9f9;
+    width: 100%;
+    max-height: 100%;
+    background-color: var(--text-clr);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Prevent content from sticking to the top */
+    margin-top: 70px; /* Prevent content from sticking to the top */
     overflow-y: auto;
 }
 
 
 /* Message box styling */
 .message-box {
+    height: 75px;
     background-color: white;
     padding: 15px;
     border-radius: 8px;
@@ -88,7 +84,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     color: #333;
 }
@@ -101,7 +97,18 @@
 
 /* Message content */
 .message-content {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: bold;
     color: #333;
     margin-top: 5px;
+}
+
+
+.empty-content {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--accent-clr);
+    margin-top: 23px;
+    text-align: center;
+    vertical-align: middle;
 }

@@ -39,7 +39,7 @@ async function fetchMsgs(userId) {
             color = "yellow"; // Moderate stock
         }
         
-        if(data.stock < 90){
+        if(data.stock < 30){
         notifications.push({ 
             type: "Stock Alert",
             date: date,
@@ -77,8 +77,21 @@ async function fetchMsgs(userId) {
 
         messagesContainer.appendChild(messageBox);
     }
-
     notifications.forEach((msg) => {
         addMessage(msg);
     });
+    if (notifications.length == 0) 
+    {
+        console.log("here");
+        const messageBox = document.createElement("div");
+        messageBox.classList.add("message-box");
+
+        const messageText = document.createElement("p");
+        messageText.classList.add("empty-content");
+        messageText.textContent = "No Notifications";
+
+        messageBox.appendChild(messageText);
+
+        messagesContainer.appendChild(messageBox);
+    }
 }
