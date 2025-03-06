@@ -1,10 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Profile.css" />
-    <title>profile</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Profile.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="Inbox.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <title>profile</title>
+</head>
+
+<body>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo">LOGO HERE</span>
+        <button onclick="toggleSidebar()" id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#7f8c8d">
+            <path
+              d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z" />
+          </svg>
+        </button>
+      </li>
+      <!-- Nav Menu starts Here -->
+      <li>
+        <a href="/Home/Home.html">
+          <i class="fa-solid fa-house fa-xl"></i><span>Home</span></a>
+      </li>
+      <li>
+        <a href="/Products/products.html"><i class="fa-solid fa-boxes-stacked fa-xl"></i><span>Products</span></a>
+      </li>
+      <li>
+        <a href="/Sales/Sales.html"><i class="fa-solid fa-truck fa-xl"></i><span>Sales</span></a>
+      </li>
+      <li class="active">
+        <a href="/inbox/Inbox.html"><i class="fa-solid fa-inbox fa-xl"></i><span>Inbox</span></a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div class="top1-bar">
+    <h2>User Profile</h2>
+  </div>
+
+  <div class="main-container">
+
+    <img src="/images/profile2.png" alt="profile pic" class="profilepic" /></a>
+
+    <form>
+      <div class="form-group">
+          <label for="full-name">Full name *</label>
+          <input type="text" id="full-name" placeholder="" required>
+      </div>
+      
+      <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="admin@example.com" required>
+      </div>
+      
+      <div class="form-group">
+          <label for="avatar">Avatar</label>
+          <input type="file" id="avatar">
+      </div>
+
+      <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" placeholder="min: 6 characters" required>
+      </div>
+
+      <div class="form-group wide">
+          <label for="repeat-password">Repeat password *</label>
+          <input type="password" id="repeat-password" placeholder="Repeat password" required>
+      </div>
+
+      <button type="submit" class="submit-btn">
+          <i class="fa-solid fa-check"></i> Submit
+      </button>
+
+      <button type="button" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i> Logout
+      </button>
+  </form>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <script type="module" src="/sidebar.js"></script>
+</body>
+
 </html>
