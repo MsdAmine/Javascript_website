@@ -1,51 +1,105 @@
-/* Center the main container */
+.top1-bar {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--base-clr);
+    border-bottom: 1px solid var(--line-clr);
+    gap: 20px;
+    
+    height: 50px; /* Fixed height */
+    width: calc(100% - 200px); /* Subtract sidebar width */
+    position: fixed;
+    top: 0;
+    left: 200px; /* Start after sidebar */
+    z-index: 1000;
+    transition: left 300ms ease-in-out, width 300ms ease-in-out;
+}
+
+.top1-bar h2 {
+    font-size: 2rem;
+    color: var(--text-clr);
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+#sidebar.close + .top1-bar {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-right: 35px; /* Ensures spacing from the right edge */
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+/* Ensure content below top bar is visible */
 .main-container {
     display: flex;
-    justify-content: center;  /* Centers horizontally */
-    align-items: center;  /* Centers vertically */
-    height: 100vh;  /* Full viewport height */
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Subtract top bar height */
+    width: calc(100% - 200px); /* Subtract sidebar width */
+    margin-left: 200px; /* Push content to the right */
+    padding-top: 70px; /* Prevent overlap with top bar */
+    transition: margin-left 300ms ease-in-out, width 300ms ease-in-out;
 }
 
-/* Message container */
+/* Adjust when sidebar is closed */
+#sidebar.close ~ .main-container {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+}
+
+
+/* Ensure messages container is properly positioned */
 #messages-container {
+    font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between messages */
+    gap: 15px;
+    width: 500px;
+    background-color: #f9f9f9;
     padding: 20px;
-    background-color: #f8f9fa; /* Light gray background */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    min-width: 400px; /* Minimum width */
-    max-width: 500px; /* Limit width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Prevent content from sticking to the top */
 }
 
-/* Notification Box */
+
+/* Message box styling */
 .message-box {
-    background-color: #ffffff;
+    background-color: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #ff6b6b; /* Red left border for alert */
-    position: relative;
+    border-left: 5px solid transparent; /* Default border */
+    transition: 0.3s ease-in-out;
 }
 
-/* Message Title */
-.message-title {
-    position: absolute;
-    top: -10px; /* Move title slightly above */
-    left: 10px;
-    background-color: #ff6b6b;
-    color: white;
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-size: 12px;
+/* Header with title and date */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
     font-weight: bold;
+    color: #333;
 }
 
-/* Message Text */
-.message-box p {
-    margin-top: 10px; /* Push text down below the title */
+/* Date styling */
+.message-date {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Message content */
+.message-content {
     font-size: 14px;
     color: #333;
-    text-align: left;
+    margin-top: 5px;
 }
