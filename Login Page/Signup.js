@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -16,10 +16,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app); // ✅ Initialize Firestore
 
 document.getElementById("sign-up").addEventListener("click", async (e) => {
   e.preventDefault();
-
+  const username = document.getElementById("name").value;
   const email = document.getElementById("email2").value;
   const password = document.getElementById("password2").value;
   const confirmPassword = document.getElementById("ConfirmPassword").value;
@@ -39,26 +40,20 @@ document.getElementById("sign-up").addEventListener("click", async (e) => {
     return;
   }
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log("User created", user);
-      alert("Sign-up successful!");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log("User created", user);
+    alert("Sign-up successful!");
 
-      // More detailed error handling for network issues
-      if (errorCode === "auth/network-request-failed") {
-        alert(
-          "Network error. Please check your internet connection and try again."
-        );
-      } else {
-        alert("Error: " + errorMessage);
-      }
+    const data = { username: username };
 
-      console.error("Error code:", errorCode);
-      console.error("Error message:", errorMessage);
-    });
+    const userRef = collection(db, `users/${user.uid}/user`);
+    const docRef = await addDoc(userRef, data);
+
+    console.log("Document written with ID:", docRef.id);
+  } catch (error) {
+    console.error("Error during sign-up:", error);
+    alert(`Error: ${error.message}`);
+  }
 });
