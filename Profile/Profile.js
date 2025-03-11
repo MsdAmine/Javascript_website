@@ -3,10 +3,7 @@ import {
     signOut,
     onAuthStateChanged,
     updateEmail,
-    updatePassword,
-    sendEmailVerification,
-    reauthenticateWithCredential,
-    EmailAuthProvider
+    updatePassword
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import {
     collection,
@@ -54,7 +51,7 @@ async function usernameUpdate(Fullname) {
         await setDoc(userRef, data);
 
         console.log("Username updated successfully!");
-        
+
         document.getElementById("full-name").value = "";
     } catch (error) {
         console.log(error);
@@ -77,6 +74,23 @@ async function emailUpdate(email) {
 
 }
 
+async function passwordUpdate(password) {
+    const user = auth.currentUser;
+
+    try {
+        await updatePassword(user, password.value);
+        console.log("Password updated successfully!");
+
+        await signOut(auth);
+        console.log("User logged out. Please log in again with the new password.");
+
+        window.location.href = "/Login Page/Login_page.html";
+    } catch (error) {
+        console.log("Error updating password:", error);
+    }
+
+}
+
 const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -92,18 +106,17 @@ form.addEventListener("submit", (e) => {
         emailUpdate(email)
     }
     if (password.value.trim() !== "") {
-
+        passwordUpdate(email)
     }
 })
 
 const logoutBtn = document.getElementById('logout');
 
 logoutBtn.addEventListener("click", () => {
-    signOut(auth)
-        .then(() => {
-            console.log("User logged out successfully!");
-            window.location.href = "/Login Page/Login_page.html";
-        })
+    signOut(auth).then(() => {
+        console.log("User logged out successfully!");
+        window.location.href = "/Login Page/Login_page.html";
+    })
         .catch((error) => {
             console.error("Error logging out:", error);
         });
