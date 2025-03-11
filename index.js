@@ -2,15 +2,15 @@ import { db, auth } from "./firebaseConfig.js";
 import {
   collection,
   getDocs,
-  query,
-  doc,
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+let userId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const userId = user.uid;
+      userId = user.uid;
       fetchAndDisplayProducts(userId);
     } else {
       console.error("No user signed in.");
@@ -64,8 +64,44 @@ async function fetchAndDisplayProducts(userId) {
   }
 }
 
+async function fetchUsername() {
+  try {
+    const welcome = document.getElementById("welcome-msg");
+    const usernameSnapshot = await getDocs(collection(db, `users/${userId}/user`));
+
+    if (usernameSnapshot.empty) {
+      console.log("No user data found.");
+      return;
+    }
+
+    let username = ""; 
+
+    usernameSnapshot.forEach((doc) => {
+      const userData = doc.data();
+      if (userData.username) {
+        username = userData.username;
+      }
+    });
+    username = username[0].toUpperCase() + username.slice(1);
+    welcome.innerHTML = `Welcome ${username}!`
+
+    console.log("Username:", username);
+    
+  } catch (error) {
+    console.log(`Error fetching username - Code: ${error}`);
+  }
+}
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
+    if (user) {
+      userId = user.uid;
+      fetchUsername();  
+    }
     const currentPath = window.location.pathname;
 
     if (!user && currentPath !== "/login.html") {
@@ -77,3 +113,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+

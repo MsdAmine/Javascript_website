@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app); // ✅ Initialize Firestore
+const db = getFirestore(app);
 
 document.getElementById("sign-up").addEventListener("click", async (e) => {
   e.preventDefault();
