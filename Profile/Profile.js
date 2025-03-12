@@ -75,39 +75,12 @@ async function emailUpdate(email) {
 
 }
 
-async function passwordUpdate(currentPassword, newPassword) {
-    const user = auth.currentUser;
-
-
-    try {
-        // Reauthenticate the user with their current password
-        const credential = EmailAuthProvider.credential(user.email, currentPassword);
-        await reauthenticateWithCredential(user, credential);
-        console.log("User re-authenticated successfully.");
-
-        // Now update the password
-        await updatePassword(user, newPassword);
-        console.log("Password updated successfully!");
-
-        // Logout user after password change
-        await signOut(auth);
-        alert("Password changed successfully. Please log in again.");
-        window.location.href = "/Login Page/Login_page.html";
-
-    } catch (error) {
-        console.error("Error updating password:", error);
-        alert(`Error updating password: ${error.message}`);
-    }
-}
-
 const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const fullName = document.getElementById("full-name");
     const email = document.getElementById("email");
-    const currentPassword = document.getElementById("current-password");
-    const newPassword = document.getElementById("new-password");
-
+    
     if (fullName.value.trim() !== "") {
         usernameUpdate(fullName);
     }
@@ -116,19 +89,6 @@ form.addEventListener("submit", (e) => {
         emailUpdate(email)
     }
 
-    if (newPassword.value.trim().length < 6) {
-        alert("Password must be at least 6 characters long.");
-        return;
-    }
-
-    if (newPassword.value.trim() === "" || currentPassword.value.trim() === "") {
-        alert("Please fill in both password fields");
-        return;
-    }
-
-    if (newPassword.value.trim() !== "" && currentPassword.value.trim() !== "") {
-        passwordUpdate(email)
-    }
 })
 
 const logoutBtn = document.getElementById('logout');
