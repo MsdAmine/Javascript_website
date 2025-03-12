@@ -3,7 +3,9 @@ import {
     signOut,
     onAuthStateChanged,
     updateEmail,
-    updatePassword
+    updatePassword,
+    EmailAuthProvider,
+    reauthenticateWithCredential
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import {
     collection,
@@ -42,10 +44,10 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-async function usernameUpdate(Fullname) {
+async function usernameUpdate(fullName) {
 
     try {
-        const data = { username: Fullname.value.trim() };
+        const data = { username: fullName.value.trim() };
 
         const userRef = doc(db, `users/${userId}/user/${userId}`);
         await setDoc(userRef, data);
@@ -63,7 +65,6 @@ async function emailUpdate(email) {
     const user = auth.currentUser;
 
     try {
-        // Update the email to the new address
         await updateEmail(user, email.value);
         console.log("Email updated successfully!");
 
@@ -74,38 +75,58 @@ async function emailUpdate(email) {
 
 }
 
-async function passwordUpdate(password) {
+async function passwordUpdate(currentPassword, newPassword) {
     const user = auth.currentUser;
 
+
     try {
-        await updatePassword(user, password.value);
+        // Reauthenticate the user with their current password
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        await reauthenticateWithCredential(user, credential);
+        console.log("User re-authenticated successfully.");
+
+        // Now update the password
+        await updatePassword(user, newPassword);
         console.log("Password updated successfully!");
 
+        // Logout user after password change
         await signOut(auth);
-        console.log("User logged out. Please log in again with the new password.");
-
+        alert("Password changed successfully. Please log in again.");
         window.location.href = "/Login Page/Login_page.html";
-    } catch (error) {
-        console.log("Error updating password:", error);
-    }
 
+    } catch (error) {
+        console.error("Error updating password:", error);
+        alert(`Error updating password: ${error.message}`);
+    }
 }
 
 const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const Fullname = document.getElementById("full-name");
+    const fullName = document.getElementById("full-name");
     const email = document.getElementById("email");
-    const password = document.getElementById("password");
+    const currentPassword = document.getElementById("current-password");
+    const newPassword = document.getElementById("new-password");
 
-    if (Fullname.value.trim() !== "") {
-        usernameUpdate(Fullname);
+    if (fullName.value.trim() !== "") {
+        usernameUpdate(fullName);
     }
 
     if (email.value.trim() !== "") {
         emailUpdate(email)
     }
-    if (password.value.trim() !== "") {
+
+    if (newPassword.value.trim().length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+    }
+
+    if (newPassword.value.trim() === "" || currentPassword.value.trim() === "") {
+        alert("Please fill in both password fields");
+        return;
+    }
+
+    if (newPassword.value.trim() !== "" && currentPassword.value.trim() !== "") {
         passwordUpdate(email)
     }
 })

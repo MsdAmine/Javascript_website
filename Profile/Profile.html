@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="Profile.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-  
+
   <title>profile</title>
 </head>
 
@@ -24,35 +24,39 @@
 
     <form id="form">
       <div class="form-group">
-          <label for="full-name">Full name</label>
-          <input type="text" id="full-name" placeholder="" >
+        <label for="full-name">Full name</label>
+        <input type="text" id="full-name" placeholder="">
       </div>
-      
+
       <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="" >
-      </div>
-      
-      <div class="form-group wide">
-          <label for="avatar">Avatar</label>
-          <input type="file" id="avatar">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="">
       </div>
 
       <div class="form-group wide">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="min: 6 characters" >
+        <label for="avatar">Avatar</label>
+        <input type="file" id="avatar">
       </div>
 
-   
+      <div class="form-group">
+        <label for="current-password">Current Password</label>
+        <input type="password" id="current-password" placeholder="Enter your current password">
+    </div>
+    
+    <div class="form-group">
+        <label for="new-password">New Password</label>
+        <input type="password" id="new-password" placeholder="At least 6 characters">
+    </div>
+    
 
       <button type="submit" class="submit-btn" id="submit">
-          <i class="fa-solid fa-check"></i> Submit
+        <i class="fa-solid fa-check"></i> Submit
       </button>
 
       <button type="button" class="logout-btn" id="logout">
-          <i class="fa-solid fa-sign-out-alt"></i> Logout
+        <i class="fa-solid fa-sign-out-alt"></i> Logout
       </button>
-  </form>
+    </form>
   </div>
 
   <script type="module" src="Profile.js"></script>
