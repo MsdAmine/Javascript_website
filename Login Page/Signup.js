@@ -52,6 +52,7 @@ document.getElementById("sign-up").addEventListener("click", async (e) => {
     const docRef = await addDoc(userRef, data);
 
     console.log("Document written with ID:", docRef.id);
+    Hide();
   } catch (error) {
     console.error("Error during sign-up:", error);
     alert(`Error: ${error.message}`);
