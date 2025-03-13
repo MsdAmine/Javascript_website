@@ -8,9 +8,7 @@ import {
     collection,
     getDocs,
     doc,
-    setDoc,
-    addDoc
-
+    setDoc
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 let userId = ""
@@ -42,9 +40,7 @@ onAuthStateChanged(auth, async (user) => {
             document.getElementById("full-name").placeholder = username;
             document.getElementById("email").placeholder = userEmail;
             document.getElementById("tel").placeholder = tel;
-            if(country){
-                document.getElementById("country-placeholder").innerHTML = country;
-            }
+            
         } catch (error) {
             console.error("Error fetching username:", error);
         }
@@ -95,7 +91,7 @@ async function addTel(tel) {
     console.log("Phone number updated for user:",userId);
 }
 
-async function addcountry(country){
+async function addCountry(country){
     const data = { Country: country.value };
 
     const userDocRef = doc(db, `users/${userId}/user/${userId}`);
@@ -111,10 +107,6 @@ form.addEventListener("submit", (e) => {
     const email = document.getElementById("email");
     const tel =document.getElementById("tel");
     const country = document.getElementById("country");
-
-
-
-
     
     if (fullName.value.trim() !== "") {
         usernameUpdate(fullName);
@@ -128,14 +120,13 @@ form.addEventListener("submit", (e) => {
         addTel(tel)
     }
 
-    if(country.value.trim()!==""){
-        addcountry(country)
+    if (country.value !== "0" && country.value !== "") {
+        alert(country.value)
+        addCountry(country);
     }
 
 
-
-
-
+    alert(msg);
 })
 
 const logoutBtn = document.getElementById('logout');

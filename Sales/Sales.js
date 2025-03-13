@@ -2,7 +2,6 @@ import { db, auth } from "../firebaseConfig.js";
 import {
   collection,
   getDocs,
-  doc,
   query,
   orderBy,
   getDoc,
