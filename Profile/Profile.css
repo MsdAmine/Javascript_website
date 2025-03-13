@@ -126,23 +126,23 @@ body{
   }
   
   .submit-btn {
-      background-color: #4e73df;
+      background-color: #3c536a;
       color: white;
       margin-top: 40px;
   }
   
   .submit-btn:hover {
-      background-color: #3759c6;
+      background-color: #2c3e50;
   }
   
   .logout-btn {
-      background-color: #e74a3b;
+      background-color: #c0392b;
       color: white;
       margin-top: 10px;
   }
   
   .logout-btn:hover {
-      background-color: #c0392b;
+      background-color: #9f1d23;
   }
   
   select {
