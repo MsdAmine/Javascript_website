@@ -2,16 +2,15 @@ import { db, auth } from "../firebaseConfig.js";
 import {
     signOut,
     onAuthStateChanged,
-    updateEmail,
-    updatePassword,
-    EmailAuthProvider,
-    reauthenticateWithCredential
+    updateEmail
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import {
     collection,
     getDocs,
     doc,
-    setDoc
+    setDoc,
+    addDoc
+
 } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
 let userId = ""
@@ -23,6 +22,8 @@ onAuthStateChanged(auth, async (user) => {
         try {
             const usernameSnapshot = await getDocs(collection(db, `users/${userId}/user`));
             let username = "";
+            let tel = "";
+            let country = "";
             const userEmail = user.email;
 
             usernameSnapshot.forEach((doc) => {
@@ -30,10 +31,20 @@ onAuthStateChanged(auth, async (user) => {
                 if (userData.username) {
                     username = userData.username;
                 }
+                if (userData.Telephone) {
+                    tel = userData.Telephone;
+                }
+                if (userData.Country) {
+                    country = userData.Country;
+                }
             });
 
             document.getElementById("full-name").placeholder = username;
             document.getElementById("email").placeholder = userEmail;
+            document.getElementById("tel").placeholder = tel;
+            if(country){
+                document.getElementById("country-placeholder").innerHTML = country;
+            }
         } catch (error) {
             console.error("Error fetching username:", error);
         }
@@ -75,11 +86,35 @@ async function emailUpdate(email) {
 
 }
 
+async function addTel(tel) {
+    const data = { Telephone: tel.value };
+
+    const userDocRef = doc(db, `users/${userId}/user/${userId}`);
+    await setDoc(userDocRef, data, { merge: true });
+
+    console.log("Phone number updated for user:",userId);
+}
+
+async function addcountry(country){
+    const data = { Country: country.value };
+
+    const userDocRef = doc(db, `users/${userId}/user/${userId}`);
+    await setDoc(userDocRef, data, { merge: true });
+
+    console.log("Country updated for user:",userId);
+}
+
 const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const fullName = document.getElementById("full-name");
     const email = document.getElementById("email");
+    const tel =document.getElementById("tel");
+    const country = document.getElementById("country");
+
+
+
+
     
     if (fullName.value.trim() !== "") {
         usernameUpdate(fullName);
@@ -88,6 +123,18 @@ form.addEventListener("submit", (e) => {
     if (email.value.trim() !== "") {
         emailUpdate(email)
     }
+
+    if (tel.value.trim() !== "" && tel.value.trim().length>=7  && tel.value.trim().length<=10) {
+        addTel(tel)
+    }
+
+    if(country.value.trim()!==""){
+        addcountry(country)
+    }
+
+
+
+
 
 })
 
